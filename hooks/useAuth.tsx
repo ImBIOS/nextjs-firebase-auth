@@ -6,6 +6,7 @@ import {
   ReactNode,
 } from "react";
 import { auth, db } from "config/firebase";
+import { User } from '@firebase/auth-types';
 const authContext = createContext({ user: {} });
 const { Provider } = authContext;
 export function AuthProvider(props: { children: ReactNode }): JSX.Element {
@@ -60,7 +61,7 @@ const useAuthProvider = () => {
     return auth.signOut().then(() => setUser(false));
   };
 
-  const getUserAdditionalData = (user: firebase.User) => {
+  const getUserAdditionalData = (user: User) => {
     return db
       .collection("users")
       .doc(user.uid)
