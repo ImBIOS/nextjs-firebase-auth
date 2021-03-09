@@ -37,11 +37,9 @@ const SignUpForm: React.FC = () => {
   const { register, errors, handleSubmit } = useForm();
 
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
 
   const onSubmit = (data: SignUpData) => {
     setIsLoading(true);
-    setError(null);
     return signUp(data).then((response) => {
      setIsLoading(false);
      router.push('/login');
