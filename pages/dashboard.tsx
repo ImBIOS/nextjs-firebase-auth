@@ -7,14 +7,26 @@ const DashBoardPage: React.FC = () => {
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
         <div className="text-center mt-24">
           <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-            {`Welcome ${auth.user.name}!`}
+            {`Welcome, ${auth.user.name}!`}
           </h2>
           <p className="mt-2 text-center text-md text-gray-600">
             {`You are logged in with ${auth.user.email}`}
           </p>
+          <p className="mt-2 text-center text-md text-gray-600">
+            {`And UID: ${auth.user.uid}`}
+          </p>
+          <p className="mt-2 text-center text-md text-gray-600">
+            {`Is email verified: ${auth.authData?.emailVerified}`}
+          </p>
+          <button
+            // onClick={() => auth.signOut()}
+            className="w-full my-4 flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out"
+          >
+            Create election
+          </button>
           <button
             onClick={() => auth.signOut()}
-            className="w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out"
+            className="w-full my-4 flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out"
           >
             Sign out
           </button>

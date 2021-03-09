@@ -19,6 +19,7 @@ export const useAuth: any = () => {
 // Provider hook that creates an auth object and handles it's state
 const useAuthProvider = () => {
   const [user, setUser] = useState(null);
+  const [authData, setAuthData] = useState(null);
   const createUser = (user) => {
     return db
       .collection("users")
@@ -64,10 +65,11 @@ const useAuthProvider = () => {
   const getUserAdditionalData = (user: User) => {
     return db
       .collection("users")
-      .doc(user.uid)
+      .doc(user?.uid)
       .get()
       .then((userData) => {
         if (userData.data()) {
+          setAuthData(user);
           setUser(userData.data());
         }
       });
@@ -104,6 +106,7 @@ const useAuthProvider = () => {
 
   return {
     user,
+    authData,
     signUp,
     signIn,
     signOut,
