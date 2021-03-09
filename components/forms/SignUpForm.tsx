@@ -1,5 +1,8 @@
 import { useForm } from "react-hook-form";
 import { auth, db } from "config/firebase";
+import React, { useState } from "react";
+import router from "next/router";
+import Button from "components/elements/Button";
 interface SignUpData {
   name: string;
   email: string;
@@ -32,11 +35,18 @@ const createUser = (user) => {
 
 const SignUpForm: React.FC = () => {
   const { register, errors, handleSubmit } = useForm();
+
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+
   const onSubmit = (data: SignUpData) => {
-    return signUp(data).then((user) => {
-      console.log(user);
+    setIsLoading(true);
+    setError(null);
+    return signUp(data).then((response) => {
+     setIsLoading(false);
+     router.push('/login');
     });
-  };
+   };
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="rounded-md shadow-sm">
@@ -118,12 +128,7 @@ const SignUpForm: React.FC = () => {
       </div>
       <div className="mt-6">
         <span className="block w-full rounded-md shadow-sm">
-          <button
-            type="submit"
-            className="w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out"
-          >
-            Sign up
-          </button>
+        <Button title="Sign up" type="submit" isLoading={isLoading} />
         </span>
       </div>
     </form>
