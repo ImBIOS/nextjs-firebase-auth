@@ -79,6 +79,18 @@ const useAuthProvider = () => {
     });
   };
 
+  const handleAuthStateChanged = (user: User) => {
+    setUser(user);
+    if (user) {
+     getUserAdditionalData(user);
+    }
+   };
+   useEffect(() => {
+    const unsub = auth.onAuthStateChanged(handleAuthStateChanged);
+    
+    return () => unsub();
+   }, []);
+
   useEffect(() => {
     if (user?.uid) {
       // Subscribe to user document on mount

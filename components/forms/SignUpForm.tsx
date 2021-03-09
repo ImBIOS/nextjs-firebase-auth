@@ -10,7 +10,7 @@ const signUp = ({ name, email, password }) => {
   return auth
     .createUserWithEmailAndPassword(email, password)
     .then((response) => {
-      console.log(response);
+      return createUser({ uid: response.user.uid, email, name });
     })
     .catch((error) => {
       return { error };
