@@ -25,4 +25,9 @@ In this project, we are going to implement the following things:
 - That’s it! Thanks for reading. I hope it was helpful. Good luck with the next steps of your project.
 
 ## Reference
-[BetterProgramming on Medium - implement user authentication with next js and firebase](https://betterprogramming.pub/implement-user-authentication-with-next-js-and-firebase-fb9414adba08)
+- [BetterProgramming on Medium - implement user authentication with next js and firebase](https://betterprogramming.pub/implement-user-authentication-with-next-js-and-firebase-fb9414adba08)
+
+## Preparation Reference
+- [Tailwind for Next.js](https://tailwindcss.com/docs/guides/nextjs)
+- [ESlint and Prettier for Next.js](https://medium.com/@gogl.alex/how-to-set-up-typescript-eslint-prettier-for-next-gatsby-c5330b4a9b7a)
+- [Setup Typescript for Next.js](https://medium.com/@selvaganesh93/setup-next-js-with-typescript-integration-dece94e43cf5)
